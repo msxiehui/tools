@@ -298,7 +298,61 @@ const tools = {
       }
     })
     return arrlist
-  }
+  },
+
+  /**------------------------------------------------cookies操作*/
+  /**
+   * 写cookies
+   * @since  1.0.1
+   * @param {String}[name]传入的cookies 名
+   * @param {String} [value]传入的cookies 值
+   * @param {number} [time] 过期时间 ，单位为 分钟 60*24*7  默认为 7天
+   * @example
+   * <p>   name = "name"
+   */
+  setCookie : function (name, value, time) {
+    var exp = new Date();
+    if (time == null) {
+      time = 60 * 24 * 7;
+    }
+    console.log(time)
+    exp.setTime(exp.getTime() + time * 60 * 1000);
+    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+  },
+
+  /**
+   * 取Cookies
+   * @since  1.0.1
+   * @param {String} name需要取出的cookies 名
+   *? @returns {String} cookies 的value值
+   * @example
+   * <p>   name = "name"
+   */
+  getCookie : function (name) {
+    var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+    // eslint-disable-next-line no-cond-assign
+    if (arr = document.cookie.match(reg)) {
+      return unescape(arr[2]);
+    } else {
+      return null;
+    }
+  },
+
+  /**
+   *  删除 Cookie
+   * @since  1.0.1
+   * @param {String} name 需要删除的cookies 名
+   * @example
+   * <p>   name = "name"
+   */
+  delCookie : function (name) {
+    var exp = new Date();
+    exp.setTime(exp.getTime() - 1);
+    var cval = tools.getCookie(name);
+    if (cval != null) {
+      document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
+    }
+  },
 
 }
 /**
