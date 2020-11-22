@@ -1,8 +1,18 @@
-import pymysql
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+"""
+工具类，基于 python3.7 制作
+author:msxiehui@163.com
+datatime: 2020-03-30 20:00
+version:1.0
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+"""
 
+import pymysql
 
 class msSql:
     __db = ''
+    __version='1.0'
     __info = {}
 
     def __init__(self, host, user, password, db, port=3306, charset='utf8'):

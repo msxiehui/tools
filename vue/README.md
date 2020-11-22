@@ -8,9 +8,13 @@ yarn build  打包
 yarn lint 检测 eslint
 
 ```
+## 插件目录：
+
+src/util/tools.js
 
 ## 日志
+#### 2020-11-22 19:23:44
+初始化信息  
+Tools.version:1.0.201122  
 
-#### version:1.0.201122
-初始化信息
 
